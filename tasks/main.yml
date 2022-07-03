@@ -1,0 +1,7 @@
+---
+# tasks file for ansible-common-tv
+- include: repos.yml
+  tags: repos
+
+- include: packages.yml
+  tags: packages

@@ -1,0 +1,114 @@
+---
+- name: apt-get clean
+  shell: apt-get clean
+  become: true
+  become_user: root
+
+- name: apt-get update
+  shell: apt-get update
+  become: true
+  become_user: root
+  ignore_errors: yes
+
+#ADD REPOS
+- name: Add Repo Numix
+  apt_repository:
+    repo: ppa:numix/ppa
+    codename: '{{ codename }}'
+    update_cache: no
+
+- name: Add Repo Git Core
+  apt_repository:
+    repo: ppa:git-core/ppa
+    codename: '{{ codename }}'
+    update_cache: no
+
+- name: Add Repo webupd8 general porpuses
+  apt_repository:
+    repo: ppa:nilarimogard/webupd8
+    codename: '{{ codename }}'
+    update_cache: no
+
+# ETCHER
+- apt_key:
+    url: https://dl.cloudsmith.io/public/balena/etcher/gpg.70528471AFF9A051.key
+    # keyserver: hkps://keyserver.ubuntu.com:443
+    # id: 379CE192D401AB61
+    state: present
+- apt_repository:
+    repo: 'deb https://dl.cloudsmith.io/public/balena/etcher/deb/ubuntu  {{ codename }} main'
+    # repo: deb https://deb.etcher.io stable etcher
+    state : present
+    update_cache: no
+
+# BOOT REPAIR
+- apt_repository:
+    repo: ppa:yannubuntu/boot-repair
+    codename: '{{ codename }}'
+    update_cache: no
+
+# SHUTTER
+## Disable for deprecation repo notice: https://www.linuxuprising.com/2021/08/official-shutter-screenshot-tool.html
+- apt_repository:
+    repo: ppa:linuxuprising/shutter  
+    codename: '{{ codename }}'
+    state : absent
+    update_cache: no
+- apt_repository:
+    repo: ppa:shutter/ppa 
+    codename: '{{ codename }}'
+    state : present
+    update_cache: no
+
+# WINE
+- apt_key:
+    # keyserver: hkp://keyserver.ubuntu.com:80
+    # id: 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
+    url: https://dl.winehq.org/wine-builds/winehq.key
+    state: present
+- apt_repository:
+    repo: 'deb https://dl.winehq.org/wine-builds/ubuntu/ {{ codename }} main'
+    state: present
+    update_cache: no
+
+#vlc-plugin-bittorrent
+- apt_repository:
+    repo: ppa:linuxuprising/apps
+    codename: '{{ codename }}'
+    update_cache: no
+
+# Lutris
+- apt_repository:
+    repo: ppa:lutris-team/lutris
+    codename: '{{ codename }}'
+    update_cache: no
+    
+# Lutris Vulkan Drivers
+## Nvidia PPA
+- apt_repository:
+    repo: ppa:graphics-drivers/ppa
+    codename: '{{ codename }}'
+    update_cache: no
+
+# Wallpaper changers
+- apt_repository:
+    repo: ppa:sicklylife/shotwell
+    codename: '{{ codename }}'
+    update_cache: no
+
+- apt_repository:
+    repo: ppa:peterlevi/ppa
+    codename: '{{ codename }}'
+    update_cache: no
+
+#Audio-Recorder
+- apt_repository:
+    repo: ppa:audio-recorder/ppa
+    codename: '{{ codename }}'
+    update_cache: no
+
+- name: apt-get update
+  shell: apt-get update
+  become: true
+  become_user: root
+  ignore_errors: yes

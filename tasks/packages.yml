@@ -1,0 +1,388 @@
+---
+#UPDATE - UPGRADE
+- name: Upgrading all packages (Ubuntu/Debian)
+  apt:
+    upgrade: dist
+  when: ansible_os_family == "Debian" or ansible_os_family == "Ubuntu"
+
+#INSTALL COMMON PACKAGES 
+- name: Instala paquetes common
+  apt: 
+    name: "{{ packages }}"
+  vars:
+    packages:
+      # - celestia
+      # - virtualbox-6.1
+      - acl
+      - apt-transport-https
+      - apt-xapian-index
+      - aptitude
+      # - arc-theme
+      # - arj
+      # - atop
+      - autoconf
+      - automake
+      - balena-etcher-electron
+      - bc
+      - bison
+        # - bluez
+        # - bluez-tools
+      - boot-repair
+      - brasero-cdrkit
+      - build-essential
+      - ca-certificates
+      # - calibre
+      # - catfish
+      - ccze
+      - checkinstall
+      # - cheese
+        # - chrome-gnome-shell
+      - clang
+      - cmake
+      - cmake-curses-gui
+      - collectd
+        # - compiz
+        # - compiz-plugins-extra
+        # - compizconfig-settings-manager
+      - curl
+        # - dbus
+      - dconf-editor
+      - default-jdk
+      # - default-jre
+      # - deja-dup
+      # - deja-dup-caja
+      # - dia
+      # - dirmngr
+      # - dnsmasq
+        # - dropbox
+      - ebtables
+      - exiv2
+      - fdupes
+      - ffmpeg
+      - figlet
+      - file-roller
+      # - filezilla
+      # - filezilla-common
+      # - filezilla-theme-papirus
+      - flatpak
+      - fonts-noto
+      - fpc
+      - freeglut3
+      - g++
+      - gcc
+      - gdebi
+      # - gimp
+      - gir1.2-appindicator3-0.1
+      - gir1.2-clutter-1.0
+      - gir1.2-gtop-2.0
+      - git
+      - git-flow
+      - git-ftp
+      - git-lfs
+      - git-svn
+        # - gnome-shell-extensions
+        # - gnome-software-plugin-flatpak
+        # - gnome-tweak-tool
+        # - gnome-tweaks
+        # - gnome-web-photo
+      - gnupg2
+      - golang-go
+        # - google-chrome-stable
+      - gparted
+      - gphoto2
+      - gpick
+      - graphviz
+      - grub-customizer
+      - gufw
+      - hardinfo
+      - hddtemp
+      - htop
+      - iftop
+      # - inkscape
+      - intel-microcode
+      - iotop
+      - iptables-persistent
+      - iptstate
+      - jq
+      - k3b
+      - kazam
+      # - kdeconnect
+      #   # - kdenlive
+      # - krita
+      # - krita-l10n
+      - language-pack-es
+      - laptop-mode-tools
+      - libavformat-dev
+      - libcurl4-openssl-dev
+      - libegl1-mesa
+      - libelf-dev
+      - libffi-dev
+      - libfile-tee-perl
+      - libfreetype6-dev
+      - libgdbm-dev
+      - libgl1-mesa-dri:i386
+      - libglib2.0-dev-bin
+      - libguestfs-perl
+      - libimage-exiftool-perl
+      - libjack-dev
+      - libjack0
+      - libjansson-dev
+      - libldap2-dev
+      - liblua5.3-dev
+      - libmagic-dev
+      - libncurses5-dev
+      - libnotify-dev
+        # - libnvidia-gl-440 
+        # - libnvidia-gl-440:i386
+      - libopencv-highgui-dev
+      - libportmidi-dev
+      - libreadline-dev
+      - libsasl2-dev
+      - libsqlite3-dev
+      - libssl-dev
+      - libstdc++5
+      - libstdc++6
+      - libsvn-java
+      - libswscale-dev
+      - libtool
+      - libvulkan1
+      - libvulkan1:i386
+      - libxml-writer-perl
+      - libxml2-dev
+      - libxslt-dev
+      - libyaml-dev
+        # - linux-generic
+        # - linux-headers-generic
+      - ldap-utils
+      - lldpd
+      - lm-sensors
+      - lsb-release
+      - lshw
+      - lutris
+      - mailutils
+      - make
+      - mat
+      - mat2
+      - mesa-vulkan-drivers
+      - mesa-vulkan-drivers:i386
+      - module-assistant
+      - moreutils
+      - mpack
+      - multipath-tools
+      - multitail
+        # - murrine-themes
+      - nano
+      - ncdu
+      - netcat
+      - netcat-openbsd
+      - network-manager-openvpn
+      - network-manager-openvpn-gnome
+      - nfs-common
+      - nfs-kernel-server
+      - nmap
+      - nmon
+        # - nodejs
+      - ntp
+      - ntpdate
+        # - numix-blue-gtk-theme
+      - numix-gtk-theme
+      - numix-icon-theme
+      - numix-icon-theme-circle
+      - nvidia-cuda-dev
+      - nvidia-cuda-toolkit
+        # - nvidia-driver-440
+      # - onedrive
+      # - openfortivpn
+      # - openshot
+      - openssh-client
+      - openssh-server
+      - openvpn
+      - p7zip-full
+      - p7zip-rar
+      # - papirus-icon-theme
+      - pavucontrol
+      - pepperflashplugin-nonfree
+      - pigz
+      # - pitivi
+      - pixmap
+      - pkg-config
+      - plank
+      - playonlinux
+      - portaudio19-dev
+      - postfix
+      - powertop
+      - preload
+      - psensor
+      - pulseaudio-equalizer
+      - putty-tools
+      - pv
+        # - python-dev
+        # - python-packaging
+        # - python-setuptools
+        # - python3-pip
+      - python3-dev
+      - python3-venv
+      - python3-systemd
+      # - quodlibet
+      - rar
+      - rbenv
+      - rdesktop
+      - rdfind
+      # - redshift
+      # - redshift-gtk
+      # - remmina
+        # - rtl8812au-dkms
+      - ruby-dev
+      - ruby-full
+      - screen
+      - screenfetch
+      - sharutils
+      - shotcut
+      # - shotwell
+      - shutter
+      # - siege
+        # - signal-desktop
+      - smartmontools
+      - snapd
+      - snmp
+      - snmp-mibs-downloader
+      - snmpd
+      - software-properties-common
+      - soundconverter
+      # - spotify-client
+      - ssh-askpass
+      - steam
+      - stellarium
+      # - stress
+      - subversion
+      - sudo
+      - swaks
+      - synaptic
+      # - syncthing
+      - sysstat
+      - tcpdump
+      - telnetd
+      - terminator
+        # - timekpr-next
+      # - timeshift
+      - tinyca
+      - tmux
+      - tor
+      - torbrowser-launcher
+      - ttf-bitstream-vera
+      - ttf-dejavu
+      - ttf-mscorefonts-installer
+      - ubuntu-restricted-extras
+      - unace
+      - unixodbc-dev
+      - unrar
+      - unzip
+      - uuid-runtime
+      - v4l2loopback-dkms
+      - v4l2loopback-utils
+      - variety
+      - vim
+      - vim-common
+      - vim-gtk
+      - vim-gui-common
+      - vim-snippets
+      - vinagre
+      - virtualenv
+      - vlc
+      - vlc-plugin-bittorrent
+      - whois
+      - wine
+      - winetricks
+        # - woeusb
+      - xclip
+      - xinetd
+      - xserver-xorg
+      - xserver-xorg-input-all
+      - xserver-xorg-video-all
+      - yarn
+      - zip
+      - zlib1g-dev
+      - zsh
+    state: present
+  #register: common-packages-installation
+  tags: common
+
+# Snap
+- name: Install snaps
+  snap:
+    name:
+      # - barrier
+      # - bitwarden
+        # - brave
+      # - discord
+      - doctl
+        # - keepassxc
+      # - lxd
+      # - notion-snap
+      - retroarch
+      # - signal-desktop
+      # - telegram-desktop
+        # - teams
+      # - vault
+      # - wickrme
+      # - zoom-client
+
+- name: Install snaps classic
+  snap:
+    name:
+      - bashtop
+      - bpytop
+      # - skype
+      # - slack
+    classic: yes
+
+- name: Install snaps edge
+  snap:
+    name:
+      - celestia-daily
+    channel: latest/edge
+
+# Flatpak
+- name: Add the flathub flatpak repository remote to the user installation
+  flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+    method: user
+
+# Install from shell script
+- name:  Install D Programming Language deps
+  shell: curl -fsS https://dlang.org/install.sh | bash -s dmd
+
+- name: Install Python upgrade packages
+  shell: python3 -m pip install pip setuptools --upgrade
+    
+#INSTALL PIPS
+- name: Install Python packages.
+  pip:
+    name: "{{ packages }}"
+  vars:
+    packages:
+            # - pip
+        # - setuptools
+      - testresources
+      - PyQt6
+      # - maestral
+      # - maestral-qt
+      - python3-ldap
+    state: latest
+    extra_args: --upgrade
+
+# Install from debs
+- name: Install a .deb package for Zoom
+  apt:
+    deb: https://zoom.us/client/latest/zoom_amd64.deb
+  when: ansible_os_family == "Debian"
+  ignore_errors: true
+
+# - name: Install a .deb package for Discord
+#   apt:
+#     deb: https://dl.discordapp.net/apps/linux/0.0.18/discord-0.0.18.deb
+#   when: ansible_os_family == "Debian"
+#   ignore_errors: true
+
