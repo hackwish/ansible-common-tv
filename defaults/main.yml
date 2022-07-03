@@ -1,2 +1,3 @@
 ---
 # defaults file for ansible-common-tv
+codename: "{{ lookup('env','DISTRIB_CODENAME') }}"
